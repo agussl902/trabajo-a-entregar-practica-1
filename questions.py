@@ -11,7 +11,8 @@ print()
 print("categorias: ")
 for categoria in words:
     print(categoria)
-categoria = input ("elije una poniendo el nombre: ").lower()
+
+categoria = input ("elije una poniendo el nombre: ").lower() #por si el usuario pone alguna letra en mayusculas
 word = random.choice (words[categoria])
 
 while attempts > 0:
@@ -26,18 +27,17 @@ while attempts > 0:
     # Verificar si el jugador ya adivinó la palabra completa
     if "_" not in progress:
         puntaje += 6
-        print("¡Ganaste! y tu puntaje fue: ", puntaje)
+        print ("¡Ganaste!")
         break
 
     print(f"Intentos restantes: {attempts}")    
     print(f"Letras usadas: {', '.join(guessed)}")
     
     letter = input("Ingresá una letra: ")
-
-    if letter in guessed:
-        print("Ya usaste esa letra.")
-    elif len (letter) > 1 or not(letter.isalpha()):
+    if len(letter) > 1 or not(letter.isalpha()):
         print("entrada no valida")
+    elif letter in guessed:
+        print("Ya usaste esa letra.")
     elif letter in word:
         guessed.append(letter)
         print("¡Bien! Esa letra está en la palabra.")
@@ -49,4 +49,5 @@ while attempts > 0:
     print()
 else:
     puntaje = 0
-    print(f"¡Perdiste! La palabra era: {word} y tu puntaje fue: {puntaje}" )
+    print(f"¡Perdiste! La palabra era: {word}" )
+print (f"tu puntaje fue de:{puntaje}" )
